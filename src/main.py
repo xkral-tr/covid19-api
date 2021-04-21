@@ -94,16 +94,19 @@ limiter = Limiter(app, key_func=get_remote_address, default_limits=["120 per min
 
 @app.route("/countries")
 def get_countries():
+    global countries
     return jsonify(countries)
 
 
 @app.route("/world")
 def get_world_stat():
+    global world
     return jsonify(world)
 
 
 @app.route("/countries/<country>")
 def get_country(country: str):
+    global countries
     return jsonify(
         next(
             (
@@ -118,11 +121,13 @@ def get_country(country: str):
 
 @app.route("/continents")
 def get_continents():
+    global continents
     return jsonify(continents)
 
 
 @app.route("/continents/<continent>")
 def get_continent(continent):
+    global continents
     ccontinent = sub(r"(\s|-)", "_", continent.lower())
     return (
         jsonify(continents[ccontinent])
