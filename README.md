@@ -1,8 +1,5 @@
 # SIMPLE COVID-19 API
-Simple covid-19 statistics api. Live on c19api.herokuapp.com
-
-Data comes from https://www.worldometers.info/coronavirus/
-
+Simple covid-19 statistics api. https://c19api.herokuapp.com
 
 ## GET /world
 Get all covid19 statistics.
