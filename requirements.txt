@@ -3,3 +3,4 @@ beautifulsoup4
 Flask
 APScheduler
 Flask-Limiter
+gunicorn
