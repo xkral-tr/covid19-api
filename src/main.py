@@ -87,6 +87,11 @@ def get_data():
     return [countries, world, continents]
 
 
+data = get_data()
+countries = data[0]
+world = data[1]
+continents = data[2]
+
 app = Flask(__name__)
 
 limiter = Limiter(app, key_func=get_remote_address, default_limits=["120 per minutes"])
@@ -148,8 +153,4 @@ def not_found(e):
 
 
 if __name__ == "__main__":
-    data = get_data()
-    countries = data[0]
-    world = data[1]
-    continents = data[2]
     app.run(port=os.environ.get("PORT", 8000), debug=False)
