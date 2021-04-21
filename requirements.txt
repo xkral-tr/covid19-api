@@ -1,0 +1,5 @@
+requests
+beautifulsoup4
+Flask
+APScheduler
+Flask-Limiter

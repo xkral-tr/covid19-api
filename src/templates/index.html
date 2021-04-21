@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid19 API</title>
+
+    <style>
+        * {
+            font-family: consolas;
+        }
+        pre {
+            background-color: #000;
+            color: #fff;
+            border-radius: 0.3em;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        hr {
+            color: gray;
+        }
+
+        .key {
+            color: rgb(28, 180, 28);
+        }
+
+        .number {
+            color: rgb(90, 90, 223);
+        }
+
+        .string {
+            color: yellow;
+        }
+
+       #description {
+           background: rgb(209, 206, 206);
+           padding: 0.2em;
+           padding-left: 1em;
+           border-radius: 0.3em;
+       }
+    </style>
+ 
+</head>
+<body>
+    <h1>COVID19 API</h1>
+    <hr>
+    <div id="description">
+        <p>Simple covid-19 statistics api</p>
+    </div>
+
+    <h2>GET /world</h2>
+    <p>Get all covid19 statistics</p>
+    <b>Example: /world </b>
+    <pre>
+        <code>
+    {
+        "active_cases": 18404546,
+        "critical_cases": 109628,
+        "new_cases": 329867,
+        "new_deaths": 5313,
+        "total_cases": 143874047,
+        "total_deaths": 3062294,
+        "total_recovered": 122407207
+    }
+        </code>
+    </pre>
+    <br>
+
+    <h2>GET /countries</h2>
+    <p>Get covid19 statistics of all countries</p>
+    <b>Example: /countries </b>
+    <pre>
+        <code>
+    [
+        ...
+        {
+            "active_cases": 6856823,
+            "continent": "North America",
+            "country": "USA",
+            "critical_cases": 10036,
+            "new_cases": 9036,
+            "new_deaths": 143,
+            "population": 332558517,
+            "total_cases": 32545506,
+            "total_deaths": 582599,
+            "total_recovered": 25106084,
+            "total_tests": 432026438
+        },
+        {
+            "active_cases": 2236207,
+            "continent": "Asia",
+            "country": "India",
+            "critical_cases": 8944,
+            "new_cases": 122562,
+            "new_deaths": 518,
+            "population": 1390864355,
+            "total_cases": 15731566,
+            "total_deaths": 183088,
+            "total_recovered": 13312271,
+            "total_tests": 271053392
+        },
+        ...
+    ]
+        </code>
+    </pre>
+    <br>
+
+
+    <h2>GET /countries/:country</h2>
+    <p>Get covid19 statistics of a country</p>
+    <b>Example: <span>/countries/usa</span></b>
+    <pre>
+        <code>
+    {
+        "active_cases": 2236207,
+        "continent": "Asia",
+        "country": "India",
+        "critical_cases": 8944,
+        "new_cases": 122562,
+        "new_deaths": 518,
+        "population": 1390864355,
+        "total_cases": 15731566,
+        "total_deaths": 183088,
+        "total_recovered": 13312271,
+        "total_tests": 271053392
+    }
+        </code>
+    </pre>
+    <br>
+
+    <h2>GET /continents</h2>
+    <p>Get covid19 statistics of all continents</p>
+    <b>Example: </b><a href="/continents">/continents</a>
+    <pre>
+        <code>
+    {
+        ...
+        "africa": {
+            "active_cases": 358906,
+            "continent": "Africa",
+            "critical_cases": 3810,
+            "new_cases": 1308,
+            "new_deaths": 16,
+            "total_cases": 4490521,
+            "total_deaths": 118935,
+            "total_recovered": 4012680
+          },
+          "asia": {
+            "active_cases": 4205330,
+            "continent": "Asia",
+            "critical_cases": 29960,
+            "new_cases": 210467,
+            "new_deaths": 1823,
+            "total_cases": 34861018,
+            "total_deaths": 476380,
+            "total_recovered": 30179308
+          },
+        ...
+    }
+        </code>
+    </pre>
+    <br>
+
+    <h2>GET /continents/africa</h2>
+    <p>Get covid19 statistics of a continent</p>
+    <b>Example: </b><a href="/continents/africa">/continents/africa</a>
+    <pre>
+        <code>
+    {
+        "active_cases": 4205330,
+        "continent": "Asia",
+        "critical_cases": 29960,
+        "new_cases": 210467,
+        "new_deaths": 1823,
+        "total_cases": 34861018,
+        "total_deaths": 476380,
+        "total_recovered": 30179308
+    }
+        </code>
+    </pre>
+    <br><hr>
+    <h3>Helloooo!!</h3>
+    <script>
+        codes = document.querySelectorAll("code")
+        console.log(codes.length)
+        function syntaxHighlight(json) {
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                var cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } 
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
+            }
+
+        codes.forEach(code => {
+            console.log("hello world")
+            code.innerHTML = syntaxHighlight(code.textContent)
+        });
+
+    </script>
+
+</body>
+</html>
