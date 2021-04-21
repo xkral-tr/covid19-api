@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from flask import Flask, jsonify, render_template
 from apscheduler.schedulers.background import BackgroundScheduler
-from os import getenv
+import os
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from re import sub
@@ -147,4 +147,4 @@ if __name__ == "__main__":
     countries = data[0]
     world = data[1]
     continents = data[2]
-    app.run(port=getenv("PORT") or 8000, debug=False)
+    app.run(port=os.environ.get("PORT", 8000), debug=False)
